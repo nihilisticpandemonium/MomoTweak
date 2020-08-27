@@ -88,7 +88,7 @@ function momoTweak.require.ExtendedDataBelt()
 			animation_speed_coefficient = 32,
 			belt_animation_set = getAnimationSet(class),
 			fast_replaceable_group = "transport-belt",
-			
+
 			max_distance = 10,
 			structure =
 			{
@@ -139,7 +139,7 @@ function momoTweak.require.ExtendedDataBelt()
 				} },
 			},
 		  },
-		  
+
 	})
 	end
 
@@ -149,7 +149,7 @@ function momoTweak.require.ExtendedDataBelt()
 			-- config distance
 			data.raw["underground-belt"][namegen(class)].max_distance = bobmods.logistics.belt_distance(level) * 2
 			-- config speed
-			if settings.startup["bobmods-logistics-beltoverhaul"].value == true and 
+			if settings.startup["bobmods-logistics-beltoverhaul"].value == true and
 			   settings.startup["bobmods-logistics-beltoverhaulspeed"].value == true then
 			   data.raw["underground-belt"][namegen(class)].speed = bobmods.logistics.belt_speed(level)
 			end
@@ -162,11 +162,11 @@ function momoTweak.require.ExtendedDataBelt()
 		if class == "purple" then ing = "turbo-underground-belt" end
 		if class == "green" then ing = "ultimate-underground-belt" end
 		local ings = {{ing, 4}}
-		
+
 		for i, ii in pairs(mixer) do
 			table.insert(ings, ii)
 		end
-		
+
 		data:extend({{
 			  type = "recipe",
 			  name = namegen(class),
@@ -192,10 +192,10 @@ function momoTweak.require.ExtendedDataBelt()
 			  allow_intermediates = false,
 			  allow_as_intermediate = false
 		}})
-		
+
 		bobmods.lib.tech.add_recipe_unlock(tech, namegen(class))
 		bobmods.lib.tech.add_recipe_unlock(tech, namegen(class).."-backward")
-		
+
 		momoTweak.extended.belt[class] = namegen(class)
 		momoTweak.extended.belt[class .. "-backward"] = namegen(class) .. "-backward"
 	end
@@ -219,16 +219,16 @@ function momoTweak.require.ExtendedDataBelt()
 			setLevel("purple", 4)
 			setLevel("green", 5)
 		end
-		
+
 		-- create recipe and put in tech
 		local mixer = "stone-brick"
 		recipe("a", 1,{
-			{mixer, 24}, 
+			{mixer, 24},
 			{"iron-plate", 10}
 		}, "logistics")
-		
+
 		if data.raw.item["clay-brick"] then mixer = "clay-brick" end
-		
+
 		recipe("fast", 2,{
 			{mixer, 36},
 			{"iron-plate", 15}
@@ -242,12 +242,12 @@ function momoTweak.require.ExtendedDataBelt()
 			{mixer, 60},
 			{"invar-alloy", 20},
 			{"bronze-alloy", 10}
-		}, "bob-logistics-4")
+		}, "logistics-4")
 		recipe("green", 5,{
 			{mixer, 72},
 			{"titanium-plate", 20},
 			{"brass-alloy", 10}
-		}, "bob-logistics-5")
+		}, "logistics-5")
 	else
 		create("a")
 		create("fast")
@@ -259,7 +259,7 @@ function momoTweak.require.ExtendedDataBelt()
 		local mixer = "stone-brick"
 		recipe("a", 1,{{mixer, 24}}, "logistics")
 		if data.raw.item["clay-brick"] then mixer = "clay-brick" end
-		
+
 		recipe("fast", 2,{{mixer, 36}}, "logistics-2")
 		recipe("express", 3,{{mixer, 48}}, "logistics-3")
 	end
